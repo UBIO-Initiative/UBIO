@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "kaeon-united": "^1.0.85",
+    "send-crypto": "^0.2.38",
+    "xmlhttprequest": "^1.8.0"
+  }
+}

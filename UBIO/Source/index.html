@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<title>UBIO</title>
+  		<link rel="shortcut icon" href="https://images.vexels.com/media/users/3/248902/isolated/preview/4bf8b2c2e7cf3ea47a91b7209db29723-statue-of-liberty-head-semi-flat.png">
+
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+		
+		<script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+		
+		<style>
+
+			h1, h6, p {
+				text-shadow: white 5px 0 5px;
+			}
+
+			#bkg {
+				position: fixed;
+				top: 0%;
+				left: 0%;
+				width: 100%;
+			}
+
+			#content {
+				position: absolute;
+				top: 0%;
+				margin: 3% 20% 0% 20%;
+			}
+
+			#disclaimer {
+				color: red;
+			}
+
+			#fade {
+				background-color: white;
+				position: absolute;
+				opacity: 60%;
+				top: 0%;
+				left: 0%;
+				width: 100%;
+				height: 100%;
+			}
+
+		</style>
+
+	</head>
+	<body>
+
+		<div id="fade"></div>
+
+		<div id="content" align="center">
+
+			<h1>Welcome to UBIO!</h1>
+			[WARNING]
+			
+			<br/>
+
+			<p>
+
+				UBIO is an open UBI platform.
+				
+			</p>
+			<p>
+
+				A <a href="https://en.wikipedia.org/wiki/Universal_basic_income" target="_blank">UBI</a>
+				is a monetary provision given on a regular basis with no strings attached and no
+				difference in how much everyone to whom it applies gets. Traditionally, it is given
+				by a government to its citizens, but it can also be given by a private charity to
+				subscribers of said charity, which is how an open UBI works.
+				
+			</p>
+			<p>
+
+				Anyone can subscribe to UBIO, and subscription is 100% free. All one needs to do is
+				provide a BitCoin wallet address to which BitCoin may be sent, in addition to their
+				phone number and email address in order to verify their identity.
+
+			</p>
+			<br/>
+
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Subscribe to UBIO</button>
+			
+			<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Subscribe to UBIO</h5>
+							<button type="button" class="btn-close" aria-label="Close" onclick="clearOut()"></button>
+						</div>
+						<div class="modal-body" width="100%">
+							<table width="100%">
+								<tr width="100%">
+									<td>Email</td>
+									<td><input class="form-control" type="text" id="input-email"/></td>
+								</tr>
+								<tr width="100%">
+									<td>Phone</td>
+									<td><input class="form-control" type="text" id="input-phone"/></td>
+								</tr>
+								<tr width="100%">
+									<td>BitCoin Wallet Address</td>
+									<td><input class="form-control" type="text" id="input-wallet"/></td>
+								</tr>
+							</table>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-primary" onclick="clearOut()">Close</button>
+							<button type="button" class="btn btn-primary" onclick="submit()">Subscribe</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<br/><br/>
+
+			<p>
+
+				In order to donate to the fund from which the UBI is drawn, all one needs to do is
+				transfer BitCoin to this BitCoin wallet address:
+
+			</p>
+			<p>
+
+				[ADDRESS]
+
+			</p>
+
+		</div>
+
+		<script>
+
+			function clearOut() {
+				
+				$("#exampleModal").modal("hide");
+
+				document.querySelector("#input-email").value = "";
+				document.querySelector("#input-phone").value = "";
+				document.querySelector("#input-wallet").value = "";
+			}
+
+			function submit() {
+
+				try {
+					
+					let submission = {
+						credentials: {
+							email: document.querySelector("#input-email").value,
+							phone: document.querySelector("#input-phone").value
+						},
+						wallet: document.querySelector("#input-wallet").value
+					};
+
+					fetch("http://localhost:80/subscribe", {
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(submission)
+					}).
+						then((response) => response.text()).
+						then((data) => {
+
+							setTimeout(() => {
+								alert(data);
+							}, 1000);
+						});
+				}
+
+				catch(error) {
+
+				}
+				
+				$("#exampleModal").modal("hide");
+			}
+
+			document.querySelector("#exampleModal").addEventListener('hidden.bs.modal', function (event) {
+				clearOut();
+			})
+
+		</script>
+
+	</body>
+</html>
