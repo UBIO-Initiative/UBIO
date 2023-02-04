@@ -19,3 +19,7 @@ provide a BitCoin wallet address to which BitCoin may be sent, in addition to th
 phone number and email address in order to verify their identity.
 
 </p>
+
+To express our motives and goals in more detail, we, the UBIO Initiative, have compiled [this presentation](https://atlas-of-kaeon.github.io/?unitedjs=https://nearpaste.vercel.app/Y0qBrgj/raw).
+
+We can be reached at [ubio.initiative@gmail.com].
