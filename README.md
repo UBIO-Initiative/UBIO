@@ -22,4 +22,4 @@ phone number and email address in order to verify their identity.
 
 To express our motives and goals in more detail, we, the UBIO Initiative, have compiled [this presentation](https://kaeon.gitlab.io/kaeon-united/?unitedjs=https://nearpaste.vercel.app/Y0qBrgj/raw).
 
-<p>We can be reached at <a href="ubio.initiative@gmail.com">ubio.initiative@gmail.com</a></p>.
+<p>We can be reached at <a href="mailto:ubio.initiative@gmail.com">ubio.initiative@gmail.com</a></p>.
